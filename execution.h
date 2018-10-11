@@ -238,22 +238,6 @@ void createTable(string tableName, vector <string> fieldNames, vector <string> f
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 void add(string tableName, vector <string> values) {
 //    Пример add("menu", {"0", "123", "pizza", "2"});
 //    Все параметры в стрингах, для удобства можно использовать str
@@ -497,25 +481,4 @@ vector <vector <string>> takeTable(string tableName) {
         cout << "Taked " << tableName << " successfully\n";
     }
     return wholeTable;
-}
-
-
-
-bool checkUser(string login, string passw) {
-    if (take("users", "name", login, "passwHash") == passw) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-
-string hash(string s) {
-    unsigned long p = 1;
-    unsigned long long h = 1;
-    for (int i = 0; i < s.size(); i++) {
-        h = h + p * (s[i] - 'a' + 1);
-        p *= 131;
-    }
-    return str(h);
 }
