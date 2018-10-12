@@ -37,17 +37,18 @@ void start() {
         cout << "Opened database successfully\n";
     }
     createTable("menu", {"id", "name", "price", "time", "description", "image"}, {"intkeynn", "stringnn", "stringnn", "stringnn", "stringnn", "stringnn"});
-}
-
-void start_order() {
-    int rc = sqlite3_open("./order.db", &db);
-    if (rc) {
-        cout << "Can't open order's data base!!!\n" << sqlite3_errmsg(db) << '\n';
-    } else {
-        cout << "Order's data base opened successfully!!!\n";
-    }
     createTable("orders", {"id", "description"}, {"stringnn", "stringnn"});
 }
+
+// void start_order() {
+//     int rc = sqlite3_open("./order.db", &db);
+//     if (rc) {
+//         cout << "Can't open order's data base!!!\n" << sqlite3_errmsg(db) << '\n';
+//     } else {
+//         cout << "Order's data base opened successfully!!!\n";
+//     }
+//     createTable("orders", {"id", "description"}, {"stringnn", "stringnn"});
+// }
 
 std :: vector <std :: string> DishVec;
 std :: vector <std :: string> DishArray;
@@ -258,7 +259,7 @@ int main() {
 
     std :: string AddMeal = "";
     bool need;
-    // start();
+    start();
     
 
 
@@ -360,7 +361,7 @@ int main() {
     CROW_ROUTE(app, "/menu")([](const crow::request&, crow::response& res) -> void{
         res.add_header("Access-Control-Allow-Origin", "*");
 
-        start();
+        // start();
 
 
         // add("menu", {"1", "pizza", "23", "1", "tasty thing", "../image/png1.png"});
@@ -425,7 +426,7 @@ int main() {
 
     CROW_ROUTE(app, "/order_menu")([](const crow::request&, crow::response& res) -> void{
         res.add_header("Access-Control-Allow-Origin", "*");
-        start_order();
+        // start_order();
 
         res.write("[ ");
         cout << "\n\n\nOrderArray: " << OrderArray.size() << "\n\n\n";
@@ -468,7 +469,7 @@ int main() {
 
     CROW_ROUTE(app, "/write_order_info")([&order_info](const crow::request&, crow::response& res) -> void{
         res.add_header("Access-Control-Allow-Origin", "*");
-        start_order();
+        // start_order();
 
         res.write("[ ");
         
